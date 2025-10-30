@@ -1,0 +1,80 @@
+
+@use 'sass:map';
+@use './_variables' as vars;
+@use './_reset';
+@use './_components';
+
+// Default theme: detect prefers-color-scheme and provide css variables
+:root {
+  --bg: #{map.get(vars.$theme-light, background)};
+  --text: #{map.get(vars.$theme-light, text)};
+  --text-50: #{map.get(vars.$theme-light, text-50)};
+  --divider: #{map.get(vars.$theme-light, divider)};
+  --border: #{map.get(vars.$theme-light, border)};
+
+  /* derivados: fondos secundarios */
+  --surface-input: #{map.get(vars.$theme-light, divider)}; /* gris claro */
+  --surface-task: #{map.get(vars.$theme-light, text-50)};  /* aún más suave */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+  --bg: #{map.get(vars.$theme-dark, background)};
+  --text: #{map.get(vars.$theme-dark, text)};
+  --text-50: #{map.get(vars.$theme-dark, text-50)};
+  --divider: #{map.get(vars.$theme-dark, divider)};
+  --border: #{map.get(vars.$theme-dark, border)};
+
+  /* derivados: fondos secundarios */
+    --surface-input: #{map.get(vars.$theme-dark, divider)}; /* blanco 20% */
+    --surface-task: #{map.get(vars.$theme-dark, text-50)};  /* blanco 50% */
+  }
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+}
+
+.app-container {
+  padding-left: vars.$screen-gap;
+  padding-right: vars.$screen-gap;
+}
+
+.app-header {
+  color: var(--text);
+}
+
+.divider {
+  background: var(--divider);
+}
+
+.task-input {
+  position: sticky;
+  top: vars.$screen-gap; // se “pega” al top con un pequeño margen
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  gap: vars.$grid;
+  padding: vars.$grid;
+  border-radius: vars.$radius;
+  background: var(--surface-input);
+  border: vars.$border-width solid var(--border);
+}
+
+.task-item {
+  border: vars.$border-width solid var(--border);
+  background: var(--surface-task);
+}
+
+.task-input input::placeholder {
+  color: var(--text-50);
+}
+
+.fullscreen-btn {
+  color: var(--text);
+}
+
+button {
+  color: var(--text);
+}

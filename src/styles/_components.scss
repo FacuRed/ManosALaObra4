@@ -1,0 +1,136 @@
+@use 'sass:map';
+@use './_variables' as vars;
+
+// Component styles: Header, Input, Buttons, Task, Divider
+
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: vars.$screen-gap;
+  gap: vars.$grid;
+}
+
+.app-header-container {
+  width: 100%;
+  max-width: vars.$max-width;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: vars.$grid;
+}
+
+.app-header {
+  font-size: vars.$h1-size;
+  line-height: vars.$h1-line-height;
+  margin: 0;
+}
+
+.fullscreen-btn {
+  height: vars.$button-height;
+  min-width: vars.$button-height;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: vars.$grid (2 * vars.$grid);
+  border-radius: vars.$radius;
+  border:vars.$border-width solid var(--border);
+}
+
+.divider {
+  width: 100%;
+  max-width: vars.$max-width;
+  height: 2px;
+  border-radius: 2px;
+}
+
+// Task Input
+.task-input {
+  width: 100%;
+  max-width: vars.$max-width;
+  display: flex;
+  align-items: center;
+  gap: vars.$grid;
+  padding: vars.$grid;
+  border-radius: vars.$radius;
+  border: vars.$border-width solid var(--border);
+}
+
+.task-input input[type="text"] {
+  flex: 1 1 auto;
+  font-size: vars.$base-size;
+  padding: vars.$grid (2 * vars.$grid); // 8 top/bottom, 16 left/right
+}
+
+.task-input button {
+  height: vars.$button-height;
+  min-width: vars.$button-height;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+}
+
+// Task List
+.task-list {
+  width: 100%;
+  max-width: vars.$max-width;
+}
+
+.task-list-header {
+  font-size: vars.$base-size;
+  margin: 0 0 8px 0;
+}
+
+.task-list-items {
+  display: flex;
+  flex-direction: column;
+  gap: vars.$grid;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: vars.$grid;
+  padding: vars.$grid;
+  border-radius: vars.$radius;
+}
+
+.task-item label {
+  display: flex;
+  align-items: center;
+  gap: vars.$grid;
+  flex: 1 1 auto;
+}
+
+.task-item input[type="checkbox"] {
+  width: 24px;
+  height: 24px;
+}
+
+.task-text {
+  font-size: vars.$base-size;
+  line-height: 1;
+}
+
+.task-text.completed {
+  text-decoration: line-through;
+}
+
+.task-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.task-empty {
+  // default fallback color (will be overridden by CSS variables)
+  color: map.get(vars.$theme-dark, text-50);
+  padding: vars.$grid;
+}
+@media (max-width: 768px) {
+  .app-container { padding-left: 12px; padding-right: 12px; }
+  .task-input { flex-direction: column; gap: 8px; }
+  .task-list { font-size: 0.9rem; }
+}

@@ -1,0 +1,56 @@
+// Variables de colores y diseño
+$grid: 8px !default;
+$radius: 4px !default;
+$border-width: 1px !default;
+
+// Colores (nombres solicitados)
+$black-100: #222222;
+$black-50: rgba(34,34,34,0.5);
+$black-10: rgba(34,34,34,0.1);
+$white-100: rgba(255,255,255,1);
+$white-80: rgba(255,255,255,0.8);
+$white-50: rgba(255,255,255,0.5);
+$white-20: rgba(255,255,255,0.2);
+
+// Theme maps
+$theme-dark: (
+  background: $black-100,
+  text: $white-100,
+  text-50: $white-20,
+  divider: $white-20,
+  border: $white-100
+);
+
+$theme-light: (
+  background: $white-100,
+  text: $black-100,
+  text-50: $black-10,
+  divider: $black-10,
+  border: $black-100
+);
+
+// Typography
+$font-family: 'Roboto', system-ui, -apple-system, 'Segoe UI', Roboto, "Helvetica Neue", Arial;
+$h1-size: 36px;
+$h1-line-height: 1.1;
+$base-size: 24px;
+$button-height: 48px;
+
+// Layout
+$max-width: 512px;
+$screen-gap: 24px; // margen lateral mínimo
+
+@use 'sass:map' as map;
+
+// Helpers
+@function theme-prop($theme, $prop) {
+  @if map.has_key($theme, $prop) {
+    @return map.get($theme, $prop);
+  }
+  @return null;
+}
+$breakpoints: (
+  mobile: 480px,
+  tablet: 768px,
+  desktop: 1024px
+);
