@@ -39,7 +39,7 @@ function App() {
       root.style.setProperty('--divider', 'rgba(255,255,255,0.2)');
       root.style.setProperty('--border', '#ffffff');
       root.style.setProperty('--surface-input', 'rgba(255,255,255,0.2)'); // equivale a divider dark
-      root.style.setProperty('--surface-task', 'rgba(255,255,255,0.5)');  // equivale a text-50 dark
+      root.style.setProperty('--surface-task', 'rgba(255,255,255,0.2)');  // equivale a text-50 dark
     }
   };
   // --- FIN NUEVO ESTADO DE TEMA ---
